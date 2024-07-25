@@ -7,7 +7,8 @@ const contraseña = document.getElementById("contraseña")
 
 const btonguardar = document.getElementById("btonguardar")
 
-let lista = []
+const lista = JSON.parse(localStorage.getItem("lista") || [])
+
 
 
 
