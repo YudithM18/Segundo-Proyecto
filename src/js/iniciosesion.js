@@ -23,7 +23,7 @@ inicio.addEventListener("click", function () {
     if ((datos[index].users === userOrGmail.value || datos[index].gmails === userOrGmail.value) && (datos[index].pass === password.value)  ) {
         
 
-    window.location.href = "/src/administración.html"
+    window.location.href = "/Segundo-Proyecto/src/administración.html"
     } 
         
     }

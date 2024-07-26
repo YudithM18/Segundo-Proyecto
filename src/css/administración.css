@@ -10,6 +10,10 @@
 
 
 
-.tamaño2{
-    width: 35%;
+
+.tabla{
+    display: grid;
+    grid-template-columns: 49% 2% 49%;
+    text-align: center;
+
 }
