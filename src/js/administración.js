@@ -12,11 +12,22 @@ const administTareas = document.getElementById("administTareas")
 const administEventos = document.getElementById("administEventos")
 
 
+let listaTarea = []
+
+let listaEvento = []
+
+
 guardar.addEventListener("click",function () {
 
-   
-    
+
+     
+
     if (tarEven.value==="tarea") {
+
+        listaTarea.push(ingresos.value + " " + fechas.value)
+
+        localStorage.setItem("listaTarea",JSON.stringify(listaTarea))||[]
+
         
         const etiquetaPTarea = document.createElement("p")
 
@@ -60,19 +71,20 @@ guardar.addEventListener("click",function () {
         contenedorTarea.removeChild(inEdit)
         })
 
-
         btnEdit.addEventListener("click",function () {
     
 
 
-        btnGuard.addEventListener("click", function () {
+            btnGuard.addEventListener("click", function () {
+    
+                etiquetaPTarea.innerText = inEdit.value
+                
+            })
+    
+            })
+    
 
-            etiquetaPTarea.innerText = inEdit.value
-            
-        })
-
-        })
-
+       
 
         administTareas.appendChild(contenedorTarea)
 
@@ -80,6 +92,11 @@ guardar.addEventListener("click",function () {
 
     }else{
         if (tarEven.value ==="evento") {
+
+            listaEvento.push(ingresos.value + " " + fechas.value)
+
+            localStorage.setItem("listaEvento",JSON.stringify(listaEvento)) || []
+
             
         const etiquetaPEvento = document.createElement("p")
 
@@ -133,27 +150,150 @@ guardar.addEventListener("click",function () {
 
         administEventos.appendChild(contenedorEvento)
 
-        
-        
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         }
+
     }
-     
-    
-    
+
+  
+
 })
+
+
+
+
+
+
+
+function cargarR() {
+
+
+
+    const datosTarea= JSON.parse(localStorage.getItem("lista"))||[]
+
+   
+   for (let index = 0; index < datosTarea.length; index++) {
+  
+    const etiquetaT = document.createElement("p")
+
+    const contenedorT =  document.createElement("div")
+
+        etiquetaT.innerHTML = datosTarea[index]
+
+        contenedorT.appendChild(etiquetaT)
+
+    const elimT = document.createElement("button")
+
+        elimT.innerHTML = "Eliminar"
+
+        contenedorT.appendChild(elimT)
+
+    const editT = document.createElement("button")
+
+        editT.innerHTML = "Editar"
+    
+        contenedorT.appendChild(editT)
+
+    const inT = document.createElement("input")
+
+        contenedorT.appendChild(inT)
+
+    const guarT = document.createElement("button")
+
+        guarT.innerHTML = "Guardar"
+
+        contenedorT.appendChild(guarT)
+
+    elimT.addEventListener("click", function () {
+
+        contenedorT.removeChild(etiquetaT)
+        contenedorT.removeChild(elimT)
+        contenedorT.removeChild(editT)
+        contenedorT.removeChild(inT)
+        contenedorT.removeChild(guarT)
+
+    })
+
+    editT.addEventListener("click", function () {
+        
+        guarT.addEventListener("click", function () {
+
+            etiquetaT.innerText= inT.value
+            
+        })
+    })
+
+    administTareas.appendChild(contenedorT)
+
+
+    }
+
+    const datosEvento = JSON.parse(localStorage.getItem("listaEvento"))||[]
+
+
+
+    for (let index = 0; index < datosEvento.length; index++) {
+    
+        const contenedorE = document.createElement("div")
+
+        const etiquetaE = document.createElement("p")
+        
+             etiquetaE.innerHTML=datosEvento[index]
+
+             contenedorE.appendChild(etiquetaE)
+
+        const elimE = document.createElement("button")
+
+             elimE.innerHTML= "Eliminar"
+
+             contenedorE.appendChild(elimE)
+
+        const editE = document.createElement("button")
+
+             editE.innerHTML="Editar"
+
+             contenedorE.appendChild(editE)
+
+        const inE = document.createElement("input")
+
+             contenedorE.appendChild(inE)
+
+        const guarE = document.createElement("button")
+
+             guarE.innerHTML="Guardar"
+
+             contenedorE.appendChild(guarE)
+
+        elimE.addEventListener("click", function () {
+
+            contenedorE.removeChild(etiquetaE)
+            contenedorE.removeChild(elimE)
+            contenedorE.removeChild(editE)
+            contenedorE.removeChild(guarE)
+            contenedorE.removeChild(inE)
+    
+    
+        })
+
+        editE.addEventListener("click", function () {
+
+            guarE.addEventListener("click", function () {
+
+                etiquetaE.innerHTML= inE.value
+
+                
+            })
+            
+        })
+
+        administEventos.appendChild(contenedorE)
+
+
+    }
+    
+
+
+
+
+    
+}
