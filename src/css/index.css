@@ -1,8 +1,10 @@
 
 .contenedor23{
     text-align: center;
+    background-image: url(/Segundo-Proyecto/src/img/fondoRegistro.jpg);
 }
 .boton{
     text-decoration: none;
     color: black;
 }
+

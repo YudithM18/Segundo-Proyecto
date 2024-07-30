@@ -26,7 +26,7 @@ guardar.addEventListener("click",function () {
 
         listaTarea.push(ingresos.value + " " + fechas.value)
 
-        localStorage.setItem("listaTarea",JSON.stringify(listaTarea))||[]
+        localStorage.setItem("listaTarea",JSON.stringify(listaTarea)||[])
 
         
         const etiquetaPTarea = document.createElement("p")
@@ -95,7 +95,7 @@ guardar.addEventListener("click",function () {
 
             listaEvento.push(ingresos.value + " " + fechas.value)
 
-            localStorage.setItem("listaEvento",JSON.stringify(listaEvento)) || []
+            localStorage.setItem("listaEvento",JSON.stringify(listaEvento)|| [])
 
             
         const etiquetaPEvento = document.createElement("p")
@@ -169,7 +169,7 @@ function cargarR() {
 
 
 
-    const datosTarea= JSON.parse(localStorage.getItem("lista"))||[]
+    const datosTarea = JSON.parse(localStorage.getItem("listaTarea") || [] )
 
    
    for (let index = 0; index < datosTarea.length; index++) {
@@ -212,13 +212,27 @@ function cargarR() {
         contenedorT.removeChild(inT)
         contenedorT.removeChild(guarT)
 
+
+        const datosTarea= JSON.parse(localStorage.getItem("listaTarea") || [] )
+
+        let valoresT = datosTarea.filter(element => element !== etiquetaT.textContent);
+
+
+          localStorage.setItem("listaTarea", JSON.stringify(valoresT))
+
+        
+
     })
 
     editT.addEventListener("click", function () {
         
         guarT.addEventListener("click", function () {
 
-            etiquetaT.innerText= inT.value
+            etiquetaT.innerHTML= inT.value
+
+
+
+
             
         })
     })
@@ -228,7 +242,10 @@ function cargarR() {
 
     }
 
-    const datosEvento = JSON.parse(localStorage.getItem("listaEvento"))||[]
+
+
+
+    const datosEvento = JSON.parse(localStorage.getItem("listaEvento")||[])
 
 
 
@@ -271,9 +288,19 @@ function cargarR() {
             contenedorE.removeChild(editE)
             contenedorE.removeChild(guarE)
             contenedorE.removeChild(inE)
-    
+
+
+            const datosEvento = JSON.parse(localStorage.getItem("listaEvento")||[])
+
+            let valoresE = datosEvento.filter(element => element !== etiquetaE.textContent);
+
+            
+          localStorage.setItem("listaEvento",JSON.stringify(valoresE))
+
     
         })
+
+        console.log(etiquetaE.textContent);
 
         editE.addEventListener("click", function () {
 
@@ -281,6 +308,8 @@ function cargarR() {
 
                 etiquetaE.innerHTML= inE.value
 
+
+                
                 
             })
             
@@ -295,5 +324,4 @@ function cargarR() {
 
 
 
-    
 }
