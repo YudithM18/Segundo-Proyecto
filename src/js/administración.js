@@ -12,9 +12,9 @@ const administTareas = document.getElementById("administTareas")
 const administEventos = document.getElementById("administEventos")
 
 
-let listaTarea = []
+let listaTarea = JSON.parse(localStorage.getItem("listaTarea") || [])
 
-let listaEvento = []
+let listaEvento = JSON.parse(localStorage.getItem("listaEvento") || [])
 
 
 guardar.addEventListener("click",function () {
@@ -77,7 +77,7 @@ guardar.addEventListener("click",function () {
 
             btnGuard.addEventListener("click", function () {
     
-                etiquetaPTarea.innerText = inEdit.value
+                etiquetaPTarea.textContent = inEdit.value
                 
             })
     
@@ -142,7 +142,7 @@ guardar.addEventListener("click",function () {
 
             guardEvent.addEventListener("click", function () {
 
-                etiquetaPEvento.innerText = inpEvent.value
+                etiquetaPEvento.textContent = inpEvent.value
                 
             })
             
@@ -165,8 +165,13 @@ guardar.addEventListener("click",function () {
 
 
 
-function cargarR() {
 
+
+
+
+
+
+function cargarR() {
 
 
     const datosTarea = JSON.parse(localStorage.getItem("listaTarea") || [] )
@@ -228,8 +233,24 @@ function cargarR() {
         
         guarT.addEventListener("click", function () {
 
-            etiquetaT.innerHTML= inT.value
 
+            const listaTarea= JSON.parse(localStorage.getItem("listaTarea") || [] )
+
+               for (let index = 0; index < listaTarea.length; index++) {
+               
+                  if (listaTarea[index]===etiquetaT.textContent) {
+
+                    listaTarea[index] = inT.value
+ 
+                    localStorage.setItem("listaTarea", JSON.stringify(listaTarea))
+
+                    etiquetaT.textContent= inT.value
+                    
+                }
+                
+                 
+
+               }
 
 
 
@@ -300,15 +321,30 @@ function cargarR() {
     
         })
 
-        console.log(etiquetaE.textContent);
-
+    
         editE.addEventListener("click", function () {
 
             guarE.addEventListener("click", function () {
 
-                etiquetaE.innerHTML= inE.value
+              
 
+                let listaEvento = JSON.parse(localStorage.getItem("listaEvento") || [])
+                
 
+                  for (let index = 0; index < listaEvento.length; index++) {
+
+                    if (listaEvento[index] === etiquetaE.textContent) {
+
+                        listaEvento[index] = inE.value
+
+                         localStorage.setItem("listaEvento", JSON.stringify(listaEvento))
+
+                         etiquetaE.textContent= inE.value
+
+                    }
+                    
+                    
+                  }
                 
                 
             })
