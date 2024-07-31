@@ -1,3 +1,19 @@
+body{
+    background-image: url(../img/fondoINISE.jpg);
+    background-size: 100%;
+
+}
+
+
 .contenedor{
    text-align: center;
+   color: white;
 }
+
+
+:any-link{
+    text-decoration: none;
+    color: white
+}
+
+

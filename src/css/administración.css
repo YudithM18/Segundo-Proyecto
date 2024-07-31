@@ -1,5 +1,14 @@
+body{
+    background-image: url(../img/fondo.admi2.jpg);
+    background-size: 100%;
+}
+
+
+
+
 .contenedor{
     text-align: center;
+    color: white;
 
 }
 
@@ -15,5 +24,6 @@
     display: grid;
     grid-template-columns: 49% 2% 49%;
     text-align: center;
+    color: white;
 
 }

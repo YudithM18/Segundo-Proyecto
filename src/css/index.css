@@ -1,10 +1,17 @@
+body{
+    background-image: url(../img/fondoRegistro.jpg);
+    background-size: 100%;
+    
+}
 
 .contenedor23{
     text-align: center;
-    background-image: url(/Segundo-Proyecto/src/img/fondoRegistro.jpg);
+    
 }
-.boton{
+:any-link{
     text-decoration: none;
-    color: black;
+    color: black
 }
+
+
 
