@@ -15,31 +15,77 @@ let datos = JSON.parse(localStorage.getItem("lista") || [])
 
 inicio.addEventListener("click", function () {
     
-     for (let index = 0; index < datos.length; index++) {
+   
+    for (let index = 0; index < datos.length; index++) {
         
-    if ((datos[index].users === userOrGmail.value || datos[index].gmails === userOrGmail.value) && (datos[index].pass === password.value)  ) {
-         
-        texto.innerHTML = "TUS DATOS SE ENCUENTRAN REGRISTRADO... HAS ENTRADO CON EXÍTO"
+        
 
-        setTimeout(() => {
-            location.href = "administración.html"
-         }, 3500);
-    } else {
+    let valor = userOrGmail.value
+    let valor2 = password.value
+    let resultadopassword = valor2.trim()
+    let resultadoGmail = valor.trim()
 
-        if ((datos[index].users !== userOrGmail.value || datos[index].gmails !== userOrGmail.value) && (datos[index].pass !== password.value)) {
+   
+      
+       if (resultadoGmail === ""  || resultadopassword === "" ) {
+
+    
+
+         texto.innerHTML = "NO SE HA ENCONTRADO DATOS EN DONDE SE SOLICITA, POR FAVOR LLENAR CORRECTAMENTE LOS DATOS SOLICITADOS"
             
-            texto.innerHTML ="HAS INGRESADO DATOS INCORRECTOS.."
-            
-        } else{
+        
+        }  else {
 
-            if ((datos[index].users == " " || datos[index].gmails == " ") || (datos[index].pass == " ")) {
-
-                texto.innerHTML = "NO SE HA ENCONTRADO DATOS EN DONDE SE SOLICITA, POR FAVOR LLENAR CORRECTAMENTE LOS DATOS SOLICITADOS"
+            if ((datos[index].users !== userOrGmail.value || datos[index].gmails !== userOrGmail.value) && (datos[index].pass !== password.value)) {
                 
+                texto.innerHTML = "SE HAN INGRESADOS DATOS INCORRECTOS O INEXISTENTES POR FAVOR REVISAR DATOS O REGISTRASE NUEVAMENTE"
+                
+            } 
+                
+        
+            else{
+                
+                if ((datos[index].users === userOrGmail.value || datos[index].gmails === userOrGmail.value) && (datos[index].pass === password.value)){
+
+                    texto.innerHTML = "TUS DATOS SE ENCUENTRAN REGRISTRADO... HAS ENTRADO CON EXÍTO"
+            
+                    setTimeout(() => {
+                        location.href = "administración.html"
+                     }, 3500);
+            
+                
+                }
+
             }
+
         }
 
-    }
+            
+            
         
     }
+
+                      
+
+     
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
