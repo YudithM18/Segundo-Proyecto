@@ -12,9 +12,9 @@ const administTareas = document.getElementById("administTareas")
 const administEventos = document.getElementById("administEventos")
 
 
-let listaTarea = JSON.parse(localStorage.getItem("listaTarea") || [])
+let listaTarea = JSON.parse(localStorage.getItem("listaTarea"))||[]
 
-let listaEvento = JSON.parse(localStorage.getItem("listaEvento") || [])
+let listaEvento = JSON.parse(localStorage.getItem("listaEvento"))||[]
 
 
 guardar.addEventListener("click",function () {
@@ -26,7 +26,7 @@ guardar.addEventListener("click",function () {
 
         listaTarea.push(ingresos.value + " " + fechas.value)
 
-        localStorage.setItem("listaTarea",JSON.stringify(listaTarea)||[])
+        localStorage.setItem("listaTarea",JSON.stringify(listaTarea))||[]
 
         
         const etiquetaPTarea = document.createElement("p")
@@ -95,7 +95,7 @@ guardar.addEventListener("click",function () {
 
             listaEvento.push(ingresos.value + " " + fechas.value)
 
-            localStorage.setItem("listaEvento",JSON.stringify(listaEvento)|| [])
+            localStorage.setItem("listaEvento",JSON.stringify(listaEvento))||[]
 
             
         const etiquetaPEvento = document.createElement("p")
@@ -174,7 +174,7 @@ guardar.addEventListener("click",function () {
 function cargarR() {
 
 
-    const datosTarea = JSON.parse(localStorage.getItem("listaTarea") || [] )
+    const datosTarea = JSON.parse(localStorage.getItem("listaTarea"))||[]
 
    
    for (let index = 0; index < datosTarea.length; index++) {
@@ -218,7 +218,7 @@ function cargarR() {
         contenedorT.removeChild(guarT)
 
 
-        const datosTarea= JSON.parse(localStorage.getItem("listaTarea") || [] )
+        const datosTarea= JSON.parse(localStorage.getItem("listaTarea"))||[]
 
         let valoresT = datosTarea.filter(element => element !== etiquetaT.textContent);
 
@@ -234,7 +234,7 @@ function cargarR() {
         guarT.addEventListener("click", function () {
 
 
-            const listaTarea= JSON.parse(localStorage.getItem("listaTarea") || [] )
+            const listaTarea= JSON.parse(localStorage.getItem("listaTarea"))||[]
 
                for (let index = 0; index < listaTarea.length; index++) {
                
@@ -266,7 +266,7 @@ function cargarR() {
 
 
 
-    const datosEvento = JSON.parse(localStorage.getItem("listaEvento")||[])
+    const datosEvento = JSON.parse(localStorage.getItem("listaEvento"))||[]
 
 
 
@@ -311,7 +311,7 @@ function cargarR() {
             contenedorE.removeChild(inE)
 
 
-            const datosEvento = JSON.parse(localStorage.getItem("listaEvento")||[])
+            const datosEvento = JSON.parse(localStorage.getItem("listaEvento"))||[]
 
             let valoresE = datosEvento.filter(element => element !== etiquetaE.textContent);
 
@@ -328,7 +328,7 @@ function cargarR() {
 
               
 
-                let listaEvento = JSON.parse(localStorage.getItem("listaEvento") || [])
+                let listaEvento = JSON.parse(localStorage.getItem("listaEvento"))||[]
                 
 
                   for (let index = 0; index < listaEvento.length; index++) {

@@ -7,11 +7,11 @@ const inicio = document.getElementById("inicio")
 
 const texto = document.getElementById("texto")
 
-let datos = JSON.parse(localStorage.getItem("lista") || [])
+let datos = JSON.parse(localStorage.getItem("lista")) || []
 
 
 
-" "
+
 
 inicio.addEventListener("click", function () {
     
@@ -33,12 +33,24 @@ inicio.addEventListener("click", function () {
 
          texto.innerHTML = "NO SE HA ENCONTRADO DATOS EN DONDE SE SOLICITA, POR FAVOR LLENAR CORRECTAMENTE LOS DATOS SOLICITADOS"
             
+          
+
+           setTimeout(() => {
+            location.reload()
+           }, 3500);
+         break
         
         }  else {
 
             if ((datos[index].users !== userOrGmail.value || datos[index].gmails !== userOrGmail.value) && (datos[index].pass !== password.value)) {
                 
                 texto.innerHTML = "SE HAN INGRESADOS DATOS INCORRECTOS O INEXISTENTES POR FAVOR REVISAR DATOS O REGISTRASE NUEVAMENTE"
+
+                setTimeout(() => {
+                    location.reload()
+                   }, 3500);
+                 break
+
                 
             } 
                 

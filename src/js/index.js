@@ -9,17 +9,36 @@ const btonguardar = document.getElementById("btonguardar")
 
 const texto = document.getElementById("texto")
 
-const lista = JSON.parse(localStorage.getItem("lista") || [])
 
+
+
+let lista = JSON.parse(localStorage.getItem("lista"))||[]
 
 
 
 btonguardar.addEventListener("click", function () {
 
-   if (correo.value == " " && usuario.value == " " && contraseña.value == " ") {
+       let valor = correo.value
+       let valor2 = usuario.value
+       let valor3 = contraseña.value
+
+       let resultado1 = valor.trim()
+       let resultado2 = valor2.trim()
+       let resultado3= valor3.trim()
+
+
+
+   if (resultado1 === "" || resultado2 === "" || resultado3 === "") {
+
 
           texto.innerHTML= "INGRESAR DATOS SOLICITADOS"
-      
+
+          setTimeout(() => {
+            location.reload()
+           }, 3500);
+   
+
+
    }  else{
 
       if (correo.value.length > 0  && usuario.value.length > 0 && contraseña.value.length > 0) {
@@ -38,7 +57,7 @@ btonguardar.addEventListener("click", function () {
 
            lista.push(persona)
  
-            localStorage.setItem("lista", JSON.stringify(lista))
+            localStorage.setItem("lista", JSON.stringify(lista))||[]
 
 
 
